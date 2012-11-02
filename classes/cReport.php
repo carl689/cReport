@@ -100,7 +100,7 @@ class cReport{
 	 * @param cReportDataSet $recursive
 	 * @return string HTML tables
 	 */
-	private function generateHTML(cReportDataSet $recursive=null){
+	private function generateHTML($recursive=null){
 		$header = array();		
 		$r = null;
 		
@@ -130,9 +130,11 @@ class cReport{
 			foreach($header as $atrName){				
 				$atData = $aDataSet->getAttribute($atrName);
 				if($atData){					
-					if(is_object($atData->getValue())){
-						//recursive here
-						$r .= '<td>'.$this->generateHTML($atData->getValue()).'</td>';
+					if(is_object($atData->getValue()) && get_class($atData->getValue()) == 'cReportDataSet'){						
+						$r .= '<td>'.$this->generateHTML($atData->getValue()).'</td>';//recursive DataSet support here. Will anybody actually use this?
+					}elseif(is_object($atData->getValue()) && get_class($atData->getValue()) == 'cReport'){
+						//$atData->getValue()->setOutput('html');  //Let them set the output type!
+						$r .= '<td>'.$atData->getValue()->outputString('html').'</td>';
 					}else{						
 						$r .= '<td>'.$atData->getValue().'</td>';	
 					}					
