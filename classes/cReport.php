@@ -16,9 +16,18 @@
 class cReport{
 	private $dataSets; //array of Datasets
 	private $output; //html table,csv,xml
+        private $id = '';
 	
 	protected $log = array();
 	
+        /**
+         * Sets the initial id
+         */
+        public function __construct(){
+            $this->setId('cReport-'.rand(1,9999));
+        }
+        
+        
 	/**
 	 * Add a set of information. Think of it as a spreadsheet row
 	 * @param cReportDataSet $data
@@ -26,6 +35,16 @@ class cReport{
 	public function addDataSet(cReportDataSet $data){		
 		$this->dataSets[] = $data;
 	}
+        
+        /**
+         * Set an id for this cReport. Example usage is HTML table id
+         * @param string $name
+         * @return bool True on success
+         */
+        public function setId($name){
+            $this->id = $name;
+            return true;
+        }
 	
 	/**
 	 * Log what is going on.
@@ -145,7 +164,7 @@ class cReport{
 			$r .= '</tr>';
 		}		
 		
-		return '<table id=\'cReportTable\' >'.$r.'</table>';
+		return '<table id=\''.$this->id.'\' >'.$r.'</table>';
 	}
 	
 	/**
