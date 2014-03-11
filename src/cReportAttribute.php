@@ -1,4 +1,5 @@
 <?php
+namespace carl689\cReport;
 /**
  * Attributes are the actual information about a dataset. Think of these as the cells in a spreadsheet
  */

@@ -3,7 +3,10 @@
  * Example using cReport to output a html table
  * @author Carl <carl689@gmail.com>
  */
-include('../cReport.php');
+namespace carl689\cReport;
+include('../src/cReport.php');
+include('../src/cReportDataSet.php');
+include('../src/cReportAttribute.php');
 
 $dataSet1 = new cReportDataSet();
 $dataSet1->addAttribute('Title','Amazing Story');

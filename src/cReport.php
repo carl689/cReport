@@ -1,4 +1,5 @@
 <?php
+namespace carl689\cReport;
 /**
  * Help generate tabular reports and charts?
  * 
@@ -151,7 +152,7 @@ class cReport{
 				if($atData){					
 					if(is_object($atData->getValue()) && get_class($atData->getValue()) == 'cReportDataSet'){						
 						$r .= '<td>'.$this->generateHTML($atData->getValue()).'</td>';//recursive DataSet support here. Will anybody actually use this?
-					}elseif(is_object($atData->getValue()) && get_class($atData->getValue()) == 'cReport'){
+					}elseif(is_object($atData->getValue()) && get_class($atData->getValue()) == 'carl689\cReport\cReportDataSet'){
 						//$atData->getValue()->setOutput('html');  //Let them set the output type!
 						$r .= '<td>'.$atData->getValue()->outputString('html').'</td>';
 					}else{						

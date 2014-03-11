@@ -1,4 +1,5 @@
 <?php
+namespace carl689\cReport;
 /**
  * Dataset object. A dataset is a set of information, think of it as a CSV row.
  */
