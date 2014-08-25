@@ -150,9 +150,9 @@ class cReport{
 			foreach($header as $atrName){				
 				$atData = $aDataSet->getAttribute($atrName);
 				if($atData){					
-					if(is_object($atData->getValue()) && get_class($atData->getValue()) == 'cReportDataSet'){						
+					if(is_object($atData->getValue()) && get_class($atData->getValue()) == 'carl689\cReport\cReportDataSet'){
 						$r .= '<td>'.$this->generateHTML($atData->getValue()).'</td>';//recursive DataSet support here. Will anybody actually use this?
-					}elseif(is_object($atData->getValue()) && get_class($atData->getValue()) == 'carl689\cReport\cReportDataSet'){
+					}elseif(is_object($atData->getValue()) && get_class($atData->getValue()) == 'carl689\cReport\cReport'){
 						//$atData->getValue()->setOutput('html');  //Let them set the output type!
 						$r .= '<td>'.$atData->getValue()->outputString('html').'</td>';
 					}else{						
